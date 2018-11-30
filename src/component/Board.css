@@ -1,0 +1,24 @@
+.Board {
+    position: relative;
+    margin: 20px auto;
+}
+
+button {
+    background-color: #34495e;
+    height: 60px;
+    width: 120px;
+    font-size: 25px;
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 5px 5px 5px black;
+    border: none
+}
+
+button:focus {
+    outline: none
+}
+
+button:active {
+    transform: translateY(5px);
+    box-shadow: none
+}
