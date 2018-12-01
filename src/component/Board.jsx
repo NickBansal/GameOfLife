@@ -29,6 +29,7 @@ class Board extends Component {
                         )
                     })}
                     <button onClick={() => this.handleClick()}>{text}</button>
+                    <button onClick={() => this.resetBoard()}>Reset</button>
             </div>
         )
     }
@@ -38,6 +39,13 @@ class Board extends Component {
     handleClick = () => {
         this.setState({
             game: !this.state.game
+        })
+    }
+    
+    resetBoard = () => {
+        this.setState({
+            grid: updateGrid(createArray(20), fooPattern), 
+            game: false
         })
     }
     
