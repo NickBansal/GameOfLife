@@ -1,5 +1,3 @@
-import { fooPattern } from './examplePatterns'
-
 export const createArray = rows => {
     const arr = [];
     for (let i = 0; i < rows; i++) {
@@ -8,12 +6,10 @@ export const createArray = rows => {
     return arr;
 }
 
-const array = createArray(Array(20).fill(0))
-
-export const updatedArray = (array) => {
-    fooPattern.forEach((item, index) => {
-        array[index+1][index+1] = 1
+export const updatedArray = (array, changedArray) => {
+    changedArray.forEach(item => {
+        array[item[0]][item[1]] = 1
     })
+    return array
 }
 
-// console.log(updatedArray(array))
