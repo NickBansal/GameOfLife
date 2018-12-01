@@ -25,7 +25,7 @@ export const bacteria = (grid) => {
     const regenCells = regenerateCells(grid)
     return removeDuplicates([...aliveCells, ...regenCells])
     .filter((item => item[0] >= 0 && item[1] >= 0))
-    .filter(item => item[0] < 20 && item[1] < 20)
+    .filter(item => item[0] < 30 && item[1] < 30)
     .sort(Comparator)
 }
 

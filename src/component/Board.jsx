@@ -6,7 +6,7 @@ import { fooPattern } from '../utils/examplePatterns'
 class Board extends Component {
 
     state = {
-        grid: updateGrid(createArray(20), fooPattern),
+        grid: updateGrid(createArray(30), fooPattern),
         game: false
     }
 
@@ -17,11 +17,13 @@ class Board extends Component {
             <div className="Board">
                 {grid.map((item, i) => {
                     return (
-                        <div key={'i'+i} className="Rows">
+                        <div key={'i'+ i} className="Rows">
                             {item.map((square, j) => {
                                 return (
-                                    <div key={'j'+j} className="Cols" style={{background: this.changeBackground(square)}}>
-                                    
+                                    <div 
+                                    key={'j'+ j} 
+                                    className="Cols" 
+                                    style={{background: this.changeBackground(square)}}>
                                     </div>
                                 )
                             })}
@@ -30,6 +32,7 @@ class Board extends Component {
                     })}
                     <button onClick={() => this.handleClick()}>{text}</button>
                     <button onClick={() => this.resetBoard()}>Reset</button>
+                    <button onClick={() => this.changeSpeed()}>Random</button>
             </div>
         )
     }
@@ -44,8 +47,7 @@ class Board extends Component {
     
     resetBoard = () => {
         this.setState({
-            grid: updateGrid(createArray(20), fooPattern), 
-            game: false
+            grid: updateGrid(createArray(30), fooPattern)
         })
     }
     
@@ -54,7 +56,7 @@ class Board extends Component {
             const changeMovements = setInterval(() => {
                 const grid1 = updatedArray(this.state.grid)
                 const newArray = bacteria(grid1)
-                const grid = updateGrid(createArray(20), newArray)
+                const grid = updateGrid(createArray(30), newArray)
                 this.setState({
                     grid,
                     changeMovements
