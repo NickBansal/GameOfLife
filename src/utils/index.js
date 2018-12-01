@@ -15,8 +15,6 @@ export const updateGrid = (grid, changedArray) => {
     return grid
 }
 
-
-
 export const bacteria = (grid) => {
     const result = []
     for (let i = 0; i < grid.length; i++) {
@@ -26,7 +24,9 @@ export const bacteria = (grid) => {
     const aliveCells = grid.filter((item, index) => result[index] === 2 || result[index] === 3)
     const regenCells = regenerateCells(grid)
     return removeDuplicates([...aliveCells, ...regenCells])
-    .filter(item => item[0] >= 0 && item[1] >= 0).sort(Comparator)
+    .filter(item => item[0] >= 0 && item[1] >= 0)
+    .filter(item => item[0] < 20 && item[1] < 20)
+    .sort(Comparator)
 }
 
 export const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
