@@ -11,6 +11,7 @@ class Board extends Component {
     }
 
     render() {
+        const text = !this.state.game ? 'Start' : 'Stop'
         const { grid } = this.state
         return (
             <div className="Board">
@@ -27,7 +28,7 @@ class Board extends Component {
                         </div>
                         )
                     })}
-                    <button onClick={() => this.handleClick()}>Start</button>
+                    <button onClick={() => this.handleClick()}>{text}</button>
             </div>
         )
     }
@@ -35,26 +36,17 @@ class Board extends Component {
     changeBackground = index => index === 1 ? '#6d7780' : '#34495e'
 
     handleClick = () => {
-        this.setState({
-            game: !this.state.game
-        })
-    }
 
-    componentDidUpdate = (prevProps, prevState) => {
-        const { game } = this.state
-        if (game !== prevState.game) {
-            if (game) {
-                setInterval(() => {
-                    const grid1 = updatedArray(this.state.grid)
-                    const newArray = bacteria(grid1)
-                    const grid = updateGrid(createArray(20), newArray)
-                    this.setState({
-                        grid,
-                    })
-                }, 100)
-            }
-        }
-    } 
+        setInterval(() => {
+            const grid1 = updatedArray(this.state.grid)
+            const newArray = bacteria(grid1)
+            const grid = updateGrid(createArray(20), newArray)
+            this.setState({
+                grid,
+                game: true
+            })
+        }, 100)
+    }
 }
 
 export default Board
