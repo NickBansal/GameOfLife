@@ -1,4 +1,4 @@
-import { createArray, updatedArray } from '../utils';
+import { createArray, updatedArray, updateGrid} from '../utils';
 
 describe('Utils testing', () => {
     test('Fake Test', () => {
@@ -18,10 +18,18 @@ describe('Utils testing', () => {
         const changedArray2 = [[0, 0], [1, 1]]
         const changedArray3 = [[0, 1], [1, 1]]
         const changedArray4 = [[0, 1], [1, 1], [2, 0]]
-        expect(updatedArray(array1, changedArray1)).toEqual([[0, 0], [0, 1]])
-        expect(updatedArray(array1, changedArray2)).toEqual([[1, 0], [0, 1]])
-        expect(updatedArray(array2, changedArray3)).toEqual([[0, 1, 0], [0, 1, 0], [0, 0, 0]])
-        expect(updatedArray(array2, changedArray3)).toEqual([[0, 1, 0], [0, 1, 0], [0, 0, 0]])
-        expect(updatedArray(array2, changedArray4)).toEqual([[0, 1, 0], [0, 1, 0], [1, 0, 0]])
+        expect(updateGrid(array1, changedArray1)).toEqual([[0, 0], [0, 1]])
+        expect(updateGrid(array1, changedArray2)).toEqual([[1, 0], [0, 1]])
+        expect(updateGrid(array2, changedArray3)).toEqual([[0, 1, 0], [0, 1, 0], [0, 0, 0]])
+        expect(updateGrid(array2, changedArray4)).toEqual([[0, 1, 0], [0, 1, 0], [1, 0, 0]])
+    })
+
+    it('Creates an array of all the alive cells', () => {
+        const grid1 = [[0, 0], [0, 1]]
+        const grid2 = [[1, 0], [0, 1]]
+        const grid3 = [[0, 1, 0], [0, 1, 0], [0, 0, 0]]
+        expect(updatedArray(grid1)).toEqual([[1, 1]])
+        expect(updatedArray(grid2)).toEqual([[0, 0], [1, 1]])
+        expect(updatedArray(grid3)).toEqual([[0, 1], [1, 1]])
     })
 })

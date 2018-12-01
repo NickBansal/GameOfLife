@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './Board.css'
-import { createArray, updatedArray } from '../utils/index'
-import { fooPattern, caretPattern } from '../utils/examplePatterns'
+import { createArray, updatedArray, bacteria, updateGrid } from '../utils/index'
+import { caretPattern } from '../utils/examplePatterns'
 
 class Board extends Component {
 
     state = {
-        grid: createArray(30)
+        grid: updateGrid(createArray(10), caretPattern)
     }
 
     render() {
@@ -34,8 +34,9 @@ class Board extends Component {
     changeBackground = index => index === 1 ? '#6d7780' : '#34495e'
 
     handleClick = () => {
-        const newUpdate = [...caretPattern, ...fooPattern]
-        const grid = updatedArray(this.state.grid, newUpdate)
+        const grid1 = updatedArray(this.state.grid)
+        const newArray = bacteria(grid1)
+        const grid = updateGrid(createArray(10), newArray)
         this.setState({
             grid
         })
