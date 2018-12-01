@@ -36,16 +36,26 @@ class Board extends Component {
     changeBackground = index => index === 1 ? '#6d7780' : '#34495e'
 
     handleClick = () => {
-
-        setInterval(() => {
-            const grid1 = updatedArray(this.state.grid)
-            const newArray = bacteria(grid1)
-            const grid = updateGrid(createArray(20), newArray)
-            this.setState({
-                grid,
-                game: true
-            })
-        }, 100)
+        this.setState({
+            game: !this.state.game
+        })
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.game !== prevState.game && this.state.game) {
+            const changeMovements = setInterval(() => {
+                const grid1 = updatedArray(this.state.grid)
+                const newArray = bacteria(grid1)
+                const grid = updateGrid(createArray(20), newArray)
+                this.setState({
+                    grid,
+                    changeMovements
+                })
+            }, 100)
+        }
+        if (this.state.game !== prevState.game && !this.state.game) {
+            clearInterval(this.state.changeMovements)
+        }
     }
 }
 
