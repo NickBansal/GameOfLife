@@ -79,3 +79,11 @@ export const updatedArray = grid => {
     return result
 }
 
+export const randomSquareSelection = num => {
+    const newArray = Array(num).fill(Array(num).fill(null ))
+    for (let i = 0; i < num; i++) {
+        newArray[i] = Array.from({length: num}, () => Math.floor(Math.random() * 2))
+    }
+    return newArray
+}
+

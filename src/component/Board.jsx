@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import './Board.css'
-import { createArray, updatedArray, bacteria, updateGrid } from '../utils/index'
-import { fooPattern } from '../utils/examplePatterns'
+import { 
+    createArray, 
+    updatedArray, 
+    bacteria, 
+    updateGrid, 
+    randomSquareSelection 
+} from '../utils/index'
+import { fooPattern1, fooPattern2 } from '../utils/examplePatterns'
 
 class Board extends Component {
 
     state = {
-        grid: updateGrid(createArray(30), fooPattern),
+        grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2]),
         game: false
     }
 
@@ -32,7 +38,7 @@ class Board extends Component {
                     })}
                     <button onClick={() => this.handleClick()}>{text}</button>
                     <button onClick={() => this.resetBoard()}>Reset</button>
-                    <button onClick={() => this.changeSpeed()}>Random</button>
+                    <button onClick={() => this.randomisedSquares()}>Random</button>
             </div>
         )
     }
@@ -44,10 +50,17 @@ class Board extends Component {
             game: !this.state.game
         })
     }
+
+    randomisedSquares = () => {
+        const grid = randomSquareSelection(30)
+        this.setState({
+            grid
+        })
+    }
     
     resetBoard = () => {
         this.setState({
-            grid: updateGrid(createArray(30), fooPattern)
+            grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2])
         })
     }
     
@@ -61,7 +74,7 @@ class Board extends Component {
                     grid,
                     changeMovements
                 })
-            }, 100)
+            }, 80)
         }
         if (this.state.game !== prevState.game && !this.state.game) {
             clearInterval(this.state.changeMovements)

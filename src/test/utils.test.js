@@ -1,4 +1,4 @@
-import { createArray, updatedArray, updateGrid} from '../utils';
+import { createArray, updatedArray, updateGrid, randomSquareSelection } from '../utils';
 
 describe('Utils testing', () => {
     test('Fake Test', () => {
@@ -32,4 +32,8 @@ describe('Utils testing', () => {
         expect(updatedArray(grid2)).toEqual([[0, 0], [1, 1]])
         expect(updatedArray(grid3)).toEqual([[0, 1], [1, 1]])
     })
+
+    // it('Creates a grid with randomly selected items', () => {
+    //     expect(randomSquareSelection(10)).toEqual([])
+    // })
 })
