@@ -13,11 +13,11 @@ class Board extends Component {
 
     state = {
         grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2]),
-        game: false
+        game: true
     }
 
     render() {
-        const text = !this.state.game ? 'Start' : 'Stop'
+        const text = this.state.game ? 'Start' : 'Stop'
         const { grid } = this.state
         return (
             <div className="Board">
@@ -46,9 +46,21 @@ class Board extends Component {
     changeBackground = index => index === 1 ? '#6d7780' : '#34495e'
 
     handleClick = () => {
+        const { game } = this.state
         this.setState({
-            game: !this.state.game
+            game: !game
         })
+        if (game) {
+            const changeMovements = setInterval(() => {
+                const grid1 = updatedArray(this.state.grid)
+                const newArray = bacteria(grid1)
+                const grid = updateGrid(createArray(30), newArray)
+                this.setState({
+                    grid,
+                    changeMovements
+                })
+            }, 80) 
+        } else clearInterval(this.state.changeMovements)
     }
 
     randomisedSquares = () => {
@@ -62,23 +74,6 @@ class Board extends Component {
         this.setState({
             grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2])
         })
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.game !== prevState.game && this.state.game) {
-            const changeMovements = setInterval(() => {
-                const grid1 = updatedArray(this.state.grid)
-                const newArray = bacteria(grid1)
-                const grid = updateGrid(createArray(30), newArray)
-                this.setState({
-                    grid,
-                    changeMovements
-                })
-            }, 80)
-        }
-        if (this.state.game !== prevState.game && !this.state.game) {
-            clearInterval(this.state.changeMovements)
-        }
     }
 }
 
