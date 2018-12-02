@@ -36,8 +36,8 @@ class Board extends Component {
                         </div>
                         )
                     })}
-                    <button onClick={() => this.handleClick()}>{text}</button>
                     <button onClick={() => this.resetBoard()}>Reset</button>
+                    <button id="Start" onClick={() => this.handleClick()}>{text}</button>
                     <button onClick={() => this.randomisedSquares()}>Random</button>
             </div>
         )

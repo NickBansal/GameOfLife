@@ -82,7 +82,9 @@ export const updatedArray = grid => {
 export const randomSquareSelection = num => {
     const newArray = Array(num).fill(Array(num).fill(null ))
     for (let i = 0; i < num; i++) {
-        newArray[i] = Array.from({length: num}, () => Math.floor(Math.random() * 2))
+        newArray[i] = Array.from({length: num}, () => {
+            return (Math.random() < 0.3) ? 1 : 0
+        })
     }
     return newArray
 }

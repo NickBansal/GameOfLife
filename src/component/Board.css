@@ -3,6 +3,16 @@
     margin: 20px auto;
 }
 
+#Start {
+    transform: scale(1.5);
+    font-size: 25px
+}
+
+#Start:active {
+    transform: scale(1.3);
+    box-shadow: 2px 2px 1px black
+}
+
 button {
     background-color: #34495e;
     height: 40px;
