@@ -4,7 +4,7 @@ import {
     updateGrid, 
     checkAmountOfNeighbours, 
     regenerateCells, 
-    Comparator, 
+    sortArrayValues, 
     removeDuplicates, 
     bacteria
 } from '../utils';
@@ -69,15 +69,15 @@ describe('Utils testing', () => {
     // Compare arrays within arrays and sort
     it('Compare arrays within arrays and sort then into order', () => {
         const array = [[1, 3], [1, 1], [1, 2]]
-        expect(array.sort(Comparator)).toEqual([[1, 1], [1, 2], [1, 3]])
+        expect(array.sort(sortArrayValues)).toEqual([[1, 1], [1, 2], [1, 3]])
     })
     it('Compare arrays within arrays and sort then into order', () => {
         const array = [[0, 3], [0, 11], [0, 2]]
-        expect(array.sort(Comparator)).toEqual([[0, 2], [0, 3], [0, 11]])
+        expect(array.sort(sortArrayValues)).toEqual([[0, 2], [0, 3], [0, 11]])
     })
     it('Compare arrays within arrays and sort then into order', () => {
         const array = [[3, 2], [3, 3], [2, 2], [2, 3]]
-        expect(array.sort(Comparator)).toEqual([[2, 2], [2, 3], [3, 2], [3, 3]])
+        expect(array.sort(sortArrayValues)).toEqual([[2, 2], [2, 3], [3, 2], [3, 3]])
     })
 
     // Calculates the regeneration of dead cells

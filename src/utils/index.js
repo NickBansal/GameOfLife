@@ -26,7 +26,7 @@ export const bacteria = (grid) => {
     return removeDuplicates([...aliveCells, ...regenCells])
     .filter((item => item[0] >= 0 && item[1] >= 0))
     .filter(item => item[0] < 30 && item[1] < 30)
-    .sort(Comparator)
+    .sort(sortArrayValues)
 }
 
 export const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
@@ -52,10 +52,10 @@ export const regenerateCells = (grid) => {
             }
         })
     })
-    return removeDuplicates(result).sort(Comparator)
+    return removeDuplicates(result).sort(sortArrayValues)
 }
 
-export const Comparator = (a, b) => {
+export const sortArrayValues = (a, b) => {
     if (a[0] < b[0]) return -1;
     else if (a[0] > b[0]) return 1;
     else if (a[0] === b[0]) {
@@ -65,7 +65,11 @@ export const Comparator = (a, b) => {
     return 0;
 }
 
-export const removeDuplicates = array => Array.from(new Set(array.map(JSON.stringify)), JSON.parse)
+export const removeDuplicates = array => array.map(JSON.stringify)
+.reverse()
+.filter((value, index, array) => array.indexOf(value, index + 1) === -1)
+.reverse()
+.map(JSON.parse)
 
 export const updatedArray = grid => {
     const result = []
