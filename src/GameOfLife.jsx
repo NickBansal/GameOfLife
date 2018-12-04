@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  createArray,
+  createEmptyGameBoard,
   updatedArray,
   bacteria,
   updateGrid,
@@ -12,7 +12,7 @@ import { fooPattern1, fooPattern2 } from './utils/examplePatterns'
 class GameOfLife extends Component {
 
   state = {
-    grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2]),
+    grid: updateGrid(createEmptyGameBoard(30), [...fooPattern1, ...fooPattern2]),
     game: true
   }
 
@@ -57,7 +57,7 @@ class GameOfLife extends Component {
       const changeMovements = setInterval(() => {
         const grid1 = updatedArray(this.state.grid)
         const newArray = bacteria(grid1)
-        const grid = updateGrid(createArray(30), newArray)
+        const grid = updateGrid(createEmptyGameBoard(30), newArray)
         this.setState({
           grid,
           changeMovements
@@ -75,7 +75,7 @@ class GameOfLife extends Component {
 
   resetBoard = () => {
     this.setState({
-      grid: updateGrid(createArray(30), [...fooPattern1, ...fooPattern2])
+      grid: updateGrid(createEmptyGameBoard(30), [...fooPattern1, ...fooPattern2])
     })
   }
 }

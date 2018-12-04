@@ -1,6 +1,6 @@
 const checker = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]
 
-export const createArray = rows => {
+export const createEmptyGameBoard = rows => {
     const arr = [];
     for (let i = 0; i < rows; i++) {
         arr[i] = Array(rows).fill(0)

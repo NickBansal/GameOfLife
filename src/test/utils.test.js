@@ -1,5 +1,5 @@
 import { 
-    createArray, 
+    createEmptyGameBoard, 
     updatedArray, 
     updateGrid, 
     checkAmountOfNeighbours, 
@@ -20,14 +20,14 @@ describe('Utils testing', () => {
     })
 
     it('Checks that create Array return the correct 2D array', () => {
-        expect(createArray(1)).toEqual([[0]])
-        expect(createArray(2)).toEqual([[0, 0], [0, 0]])
-        expect(createArray(3)).toEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+        expect(createEmptyGameBoard(1)).toEqual([[0]])
+        expect(createEmptyGameBoard(2)).toEqual([[0, 0], [0, 0]])
+        expect(createEmptyGameBoard(3)).toEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
     })
 
     it('Picks specific values in an array and updates them', () => {
-        const array1 = createArray(2)
-        const array2 = createArray(3)
+        const array1 = createEmptyGameBoard(2)
+        const array2 = createEmptyGameBoard(3)
         const changedArray1 = [[1, 1]]
         const changedArray2 = [[0, 0], [1, 1]]
         const changedArray3 = [[0, 1], [1, 1]]
