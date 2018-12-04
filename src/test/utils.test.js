@@ -66,7 +66,7 @@ describe('Utils testing', () => {
     })
 
 
-    // Compare arrays within arrays and sort
+    // Compare arrays within arrays and sort them
     it('Compare arrays within arrays and sort then into order', () => {
         const array = [[1, 3], [1, 1], [1, 2]]
         expect(array.sort(sortArrayValues)).toEqual([[1, 1], [1, 2], [1, 3]])
@@ -97,6 +97,7 @@ describe('Utils testing', () => {
         expect(removeDuplicates([1, 1, 2, 3])).toEqual([1, 2, 3])
         expect(removeDuplicates([1, 2, 1, 3, 1])).toEqual([1, 2, 3])
         expect(removeDuplicates([1, 2, 1, 3, 1, 2, 3])).toEqual([1, 2, 3])
+        expect(removeDuplicates([[0, 0], [0, 1], [0, 0], [0 ,1]])).toEqual([[0, 0], [0, 1]])
     })
 
     // Final bacteria result
