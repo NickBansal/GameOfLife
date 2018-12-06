@@ -46,7 +46,7 @@ class GameOfLife extends Component {
     );
   }
 
-  changeBackground = index => index === 1 ? '#6d7780' : '#34495e'
+  changeBackground = index => index === 1 ? '#eedd82' : '#40e0d0'
 
   handleClick = () => {
     const { game } = this.state
