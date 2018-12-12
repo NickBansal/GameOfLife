@@ -5,7 +5,8 @@ import {
   updatedArray,
   bacteria,
   updateGrid,
-  randomSquareSelection
+  randomSquareSelection,
+  changeBackground
 } from './utils/index'
 import { fooPattern1, fooPattern2 } from './utils/examplePatterns'
 
@@ -31,7 +32,7 @@ class GameOfLife extends Component {
                     <div
                       key={'j' + j}
                       className="Cols"
-                      style={{ background: this.changeBackground(square) }}>
+                      style={{ background: changeBackground(square) }}>
                     </div>
                   )
                 })}
@@ -45,8 +46,6 @@ class GameOfLife extends Component {
       </div>
     );
   }
-
-  changeBackground = index => index === 1 ? '#ffcc00' : '#009999'
 
   handleClick = () => {
     const { game } = this.state

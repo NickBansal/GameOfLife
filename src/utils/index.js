@@ -83,6 +83,8 @@ export const updatedArray = grid => {
     return result
 }
 
+export const changeBackground = index => index === 1 ? '#ffcc00' : '#009999'
+
 export const randomSquareSelection = num => {
     const newArray = Array(num).fill(Array(num).fill(null))
     for (let i = 0; i < num; i++) {
