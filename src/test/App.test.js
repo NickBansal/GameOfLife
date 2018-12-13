@@ -1,6 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import './setupTest'
 import App from '../GameOfLife';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

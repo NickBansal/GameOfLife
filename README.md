@@ -8,7 +8,7 @@ The following rules needed to be applied:
 * Any live bacteria cell with more than three live neighbours dies, as if by overcrowding.
 * Any dead bacteria cell with exactly three live neighbours becomes a live bacteria cell, as if by reproduction.
 
-This game is set up using Javascript in Visual Studio Code and testing is done with Jest.
+This game is set up using Javascript in Visual Studio Code and testing is done with Jest and Enzyme.
 
 ## Step-by-step
 - [x] Create a game board to show the cells
