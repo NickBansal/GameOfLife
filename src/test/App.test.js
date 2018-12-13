@@ -27,4 +27,10 @@ describe('<App />', () => {
         newInstance.handleClick()
         expect(wrapper.state().game).toBeTruthy()
     })
+    it('Game button changes text', () => {
+        wrapper.setState({ game: false })
+        expect(wrapper.find('#Start').text()).toBe('Stop')
+        wrapper.setState({ game: true })
+        expect(wrapper.find('#Start').text()).toBe('Start')
+    })
 })
