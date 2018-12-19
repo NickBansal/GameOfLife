@@ -61,7 +61,7 @@ class GameOfLife extends Component {
           grid,
           changeMovements
         })
-      }, 80)
+      }, 50)
     } else clearInterval(this.state.changeMovements)
   }
 
